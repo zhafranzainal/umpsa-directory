@@ -15,10 +15,10 @@
 
         <h1>Student Directory</h1>
 
-        <img id="studentImage" src="{{ url_for('static', filename='assets/avatar.png') }}" alt="Student Image"
-            oncontextmenu="return false;">
+        <img id="studentImage" src="https://apps02.ump.edu.my/semakan/displayphoto?id={{ studentId }}"
+            alt="Student Image" oncontextmenu="return false;">
 
-        <p id="studentName">{{ studentName }}</p>
+        <p>{{ studentName }}</p>
 
         <form method="POST" action="{{ url_for('display_student_info') }}">
 
@@ -29,6 +29,7 @@
             </div>
 
             <button class="button-85" type="submit">Search</button>
+
         </form>
 
     </div>
