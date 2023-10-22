@@ -3,21 +3,22 @@
 
 <head>
     <title>UMPSA Directory</title>
-    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles.css') }}">
 </head>
 
 <body>
 
     <div id="container">
 
-        <img id="logo" src="../assets/logo_umpsa.png" alt="UMPSA Logo" oncontextmenu="return false;" />
+        <img id="logo" src="{{ url_for('static', filename='assets/logo_umpsa.png') }}" alt="UMPSA Logo"
+            oncontextmenu="return false;" />
 
         <h1>Student Directory</h1>
 
         <img id="studentImage" src="https://apps02.ump.edu.my/semakan/displayphoto?id=CB20033" alt="Student Image"
             oncontextmenu="return false;">
 
-        <p id="studentName">Zhafran Zainal</p>
+        <p id="studentName">{{ studentName }}</p>
 
         <label for="studentId">Enter Student ID:</label>
         <div class="search-box">
@@ -29,7 +30,7 @@
 
     </div>
 
-    <script src="../scripts/script.js"></script>
+    <script src="{{ url_for('static', filename='scripts/script.js') }}"></script>
 
 </body>
 
