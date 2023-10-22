@@ -29,10 +29,11 @@ def scrape_student_info(student_id):
 
         for row in rows:
             if 'NAMA' in row.get_text():
-                name = row.find_all('td')[1].get_text(strip=True).split(": ")[1]
-                return name
-
-        return "Student Name Not Found"
+                try:
+                    name = row.find_all('td')[1].get_text(strip=True).split(": ")[1]
+                    return name
+                except (IndexError, ValueError):
+                    return "Student Name Not Found"
 
     else:
         print('Failed to retrieve the web page. Status code:', response.status_code)
