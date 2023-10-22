@@ -9,7 +9,7 @@ app = Flask('')
 @app.route('/', methods=['GET', 'POST'])
 def display_student_info():
     if request.method == 'POST':
-        student_id = request.form.get('studentId')
+        student_id = request.form.get('studentId').upper()
         student_name = scrape_student_info(student_id)
         return render_template('umpsa-directory.html', studentName=student_name, studentId=student_id)
 
