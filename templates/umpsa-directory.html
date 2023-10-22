@@ -15,18 +15,22 @@
 
         <h1>Student Directory</h1>
 
-        <img id="studentImage" src="https://apps02.ump.edu.my/semakan/displayphoto?id=CB20033" alt="Student Image"
-            oncontextmenu="return false;">
+        <img id="studentImage"
+            src="https://www.mona.uwi.edu/modlang/sites/default/files/modlang/male-avatar-placeholder.png"
+            alt="Student Image" oncontextmenu="return false;">
 
         <p id="studentName">{{ studentName }}</p>
 
-        <label for="studentId">Enter Student ID:</label>
-        <div class="search-box">
-            <input id="studentId" name="studentId" required="" type="text" />
-            <button id="clearBtn" type="button">X</button>
-        </div>
+        <form method="POST" action="{{ url_for('display_student_info') }}">
 
-        <button class="button-85" type="submit">Search</button>
+            <label for="studentId">Enter Student ID:</label>
+            <div class="search-box">
+                <input id="studentId" name="studentId" required="" type="text" />
+                <button id="clearBtn" type="button">X</button>
+            </div>
+
+            <button class="button-85" type="submit">Search</button>
+        </form>
 
     </div>
 

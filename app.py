@@ -1,19 +1,23 @@
 import requests
 from bs4 import BeautifulSoup
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask('')
 
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def display_student_info():
-    studentName = scrape_student_info()
-    return render_template('umpsa-directory.html', studentName=studentName)
+    if request.method == 'POST':
+        student_id = request.form.get('studentId')
+        studentName = scrape_student_info(student_id)
+        return render_template('umpsa-directory.html', studentName=studentName)
+
+    return render_template('umpsa-directory.html', studentName='student name')
 
 
-def scrape_student_info():
-    url = 'https://apps02.ump.edu.my/semakan/Matric_Card.jsp?std_id=CB20100'
+def scrape_student_info(student_id):
+    url = f'https://apps02.ump.edu.my/semakan/Matric_Card.jsp?std_id={student_id}'
 
     response = requests.get(url)
 
@@ -22,7 +26,6 @@ def scrape_student_info():
         soup = BeautifulSoup(response.text, 'html.parser')
 
         rows = soup.find_all('tr', bgcolor='#CCCCCC')
-        img_tag = soup.find('img', id='cropbox')
 
         for row in rows:
             if 'NAMA' in row.get_text():
