@@ -15,7 +15,8 @@
 
         <h1>Student Directory</h1>
 
-        <img id="studentImage" src="https://apps02.ump.edu.my/semakan/displayphoto?id={{ studentId }}"
+        <img id="studentImage"
+            src="{% if studentId %}https://apps02.ump.edu.my/semakan/displayphoto?id={{ studentId }}{% else %}{{ url_for('static', filename='assets/avatar.png') }}{% endif %}"
             alt="Student Image" oncontextmenu="return false;">
 
         <p>{{ studentName }}</p>
