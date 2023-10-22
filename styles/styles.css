@@ -10,8 +10,21 @@ html {
     height: 100%;
 }
 
+#logo {
+    width: 200px;
+    -webkit-user-drag: none;
+}
+
 h1 {
     font-size: 4rem;
+    font-family: sans-serif;
+    margin-bottom: 20px
+}
+
+#studentImage {
+    border: 3px solid black;
+    height: 300px;
+    -webkit-user-drag: none;
 }
 
 label {
